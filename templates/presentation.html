@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+
+<div id="presentationCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+    <button id="fullscreenBtn" class="btn btn-dark position-absolute" style="z-index: 1000; top: 10px; right: 10px; background-color: transparent;">
+        <i class="fas fa-expand"></i></button>
+
+    <ul class="carousel-indicators position-absolute" style="top: auto; bottom: 5px;">
+       
+            <li data-target="#presentationCarousel" data-slide-to="{{ i }}" {% if i == 0 %}class="active"{% endif %}></li>
+       
+    </ul>
+
+    <div class="carousel-inner">
+       
+            <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                <img src="/statics/presentation/slide{{ i + 1 }}.png" alt="Slide {{ i + 1 }}" class="d-block w-100">
+            </div>
+       
+    </div>
+
+    <a class="carousel-control-prev" href="#presentationCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#presentationCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<style>
+    .fullscreen-mode {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .fullscreen-mode .carousel-inner {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .fullscreen-mode img {
+        max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+    }
+
+    .carousel-item {
+        width: 100%;
+    }
+</style>
+
+<script>
+    const carouselElement = document.getElementById("presentationCarousel");
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+    fullscreenBtn.addEventListener("click", function() {
+        carouselElement.classList.toggle("fullscreen-mode");
+    });
+
+    document.addEventListener("click", function(event) {
+        if (!carouselElement.contains(event.target) && carouselElement.classList.contains("fullscreen-mode")) {
+            carouselElement.classList.remove("fullscreen-mode");
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (carouselElement.classList.contains("fullscreen-mode")) {
+            switch (event.key) {
+                case "ArrowRight":
+                    $('#presentationCarousel').carousel('next');
+                    break;
+                case "ArrowLeft":
+                    $('#presentationCarousel').carousel('prev');
+                    break;
+                case "Escape":
+                    carouselElement.classList.remove("fullscreen-mode");
+                    break;
+            }
+        }
+    });
+</script>
+
+
+</body>
+
+</html>

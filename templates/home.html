@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Predict - Baby Cry Categorization{% endblock %}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #EAEDED;
+            border-bottom: 3px solid #3498DB;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .container {
+            margin-top: 4rem;
+        }
+
+        img {
+            max-width: 550px;
+            border: 4px solid #3498DB;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #ECF0F1;
+        }
+    </style>
+</head>
+
+<body>
+
+{% block content %}
+<div class="container mt-4 text-center">
+    <h1>
+        NANCY - Baby cry categorization
+    </h1>
+    <div class="d-flex justify-content-center mt-4">
+        <img src="/statics/pics/baby.jpg" alt="Baby Image" class="rounded-circle"/>
+    </div>
+    <p class="mt-4">
+        This is the final project presented by team NANCY for the LeWagon Bootcamp in Berlin, batch-1283
+    </p>
+</div>
+{% endblock %}
+
+</body>
+
+</html>
