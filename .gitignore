@@ -1,0 +1,14 @@
+venv
+__pycache__
+.pytest_cache
+.idea
+idea
+configurations.yaml
+logs
+audio
+.DS_Store
+testssss
+data
+saved_models
+trash
+VGG16_Baby_prod.h5
